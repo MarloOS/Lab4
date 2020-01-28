@@ -16,6 +16,8 @@
 		940890E723DFA5BB00F877D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 940890E523DFA5BB00F877D3 /* LaunchScreen.storyboard */; };
 		940890F223DFA5BC00F877D3 /* Lab4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940890F123DFA5BC00F877D3 /* Lab4Tests.swift */; };
 		940890FD23DFA5BC00F877D3 /* Lab4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 940890FC23DFA5BC00F877D3 /* Lab4UITests.swift */; };
+		9408910B23DFA7E200F877D3 /* PhotoEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408910A23DFA7E200F877D3 /* PhotoEntry.swift */; };
+		9408910D23DFB93800F877D3 /* PhotoEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9408910C23DFB93800F877D3 /* PhotoEntryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		940890F823DFA5BC00F877D3 /* Lab4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Lab4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		940890FC23DFA5BC00F877D3 /* Lab4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lab4UITests.swift; sourceTree = "<group>"; };
 		940890FE23DFA5BC00F877D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9408910A23DFA7E200F877D3 /* PhotoEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntry.swift; sourceTree = "<group>"; };
+		9408910C23DFB93800F877D3 /* PhotoEntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEntryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,8 @@
 				940890D823DFA5B700F877D3 /* AppDelegate.swift */,
 				940890DA23DFA5B700F877D3 /* SceneDelegate.swift */,
 				940890DC23DFA5B700F877D3 /* MasterViewController.swift */,
+				9408910C23DFB93800F877D3 /* PhotoEntryTableViewCell.swift */,
+				9408910A23DFA7E200F877D3 /* PhotoEntry.swift */,
 				940890DE23DFA5B700F877D3 /* DetailViewController.swift */,
 				940890E023DFA5B700F877D3 /* Main.storyboard */,
 				940890E323DFA5BB00F877D3 /* Assets.xcassets */,
@@ -265,7 +271,9 @@
 				940890D923DFA5B700F877D3 /* AppDelegate.swift in Sources */,
 				940890DB23DFA5B700F877D3 /* SceneDelegate.swift in Sources */,
 				940890DD23DFA5B700F877D3 /* MasterViewController.swift in Sources */,
+				9408910B23DFA7E200F877D3 /* PhotoEntry.swift in Sources */,
 				940890DF23DFA5B700F877D3 /* DetailViewController.swift in Sources */,
+				9408910D23DFB93800F877D3 /* PhotoEntryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

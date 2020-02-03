@@ -9,17 +9,16 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
-    // MARK - Properties
+    
+    // MARK: - Properties
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var notesView: UITextView!
     var entry: PhotoEntry?
     
     // MARK: - Delegate Functions
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
         photoView.image = entry?.photo
         notesView.text = entry?.notes
     }
 }
-

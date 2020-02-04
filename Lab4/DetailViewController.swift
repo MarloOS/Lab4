@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Properties
     @IBOutlet weak var photoView: UIImageView!
@@ -20,5 +20,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         photoView.image = entry?.photo
         notesView.text = entry?.notes
+        notesView.delegate = self
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        entry?.notes = textView.text
     }
 }

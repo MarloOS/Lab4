@@ -8,16 +8,17 @@
 
 import UIKit
 
-import os
+import os // this begins where we are trying to save and load data.
 
-class PropertyKey {
+class PropertyKey { // contains some String variables to help us identify the properties of a PhotoEntry
     static let photo = "photo"
     static let notes = "notes"
 }
     
-class PhotoEntry: NSObject, NSCoding {
-    static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-    static let archiveURL = documentsDirectory.appendingPathComponent("entries")
+class PhotoEntry: NSObject, NSCoding { // PhotoEntry is a subclass of these two things.
+    static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first! // Determines where our directory will be.
+    static let archiveURL = documentsDirectory.appendingPathComponent("entries") // archiveURL must be the path where we will store our photo entries
+    // this ends the first part of saving and loading.
     
     // MARK: - Properties
     var photo: UIImage
@@ -30,20 +31,21 @@ class PhotoEntry: NSObject, NSCoding {
     }
     
     // MARK: - Load/Save
-    required convenience init?(coder aDecoder: NSCoder) {
-        guard let newPhoto = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage else {
-            os_log("Missing image", log:OSLog.default, type: .debug)
+    // obviously this is also loading and saving.
+    required convenience init?(coder aDecoder: NSCoder) { //
+        guard let newPhoto = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage else { // guard assigns newPhoto to whatever UIImage is returned,
+            os_log("Missing image", log:OSLog.default, type: .debug) // else the missing image message is logged.
             return nil
         }
-        guard let newNotes = aDecoder.decodeObject(forKey: PropertyKey.notes) as? String else {
-            os_log("Missing notes", log: OSLog.default, type: .debug)
+        guard let newNotes = aDecoder.decodeObject(forKey: PropertyKey.notes) as? String else { // assigns newNotes to whatever String is returned, or else
+            os_log("Missing notes", log: OSLog.default, type: .debug) // writes out "missing notes"
             return nil
         }
-        self.init(photo: newPhoto, notes: newNotes)
+        self.init(photo: newPhoto, notes: newNotes) // Initializes the photoEntry object with these two new values.
     }
     func encode(with aCoder: NSCoder){
-        aCoder.encode(photo, forKey: PropertyKey.photo)
-        aCoder.encode(notes, forKey: PropertyKey.notes)
+        aCoder.encode(photo, forKey: PropertyKey.photo) // encodes the photo data
+        aCoder.encode(notes, forKey: PropertyKey.notes) // encodes the notes data
     }
     
 }

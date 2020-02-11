@@ -31,30 +31,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fif-ke-UQS">
-                                <rect key="frame" x="1" y="88" width="412" height="775"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MoH-Is-2NC">
+                                <rect key="frame" x="0.0" y="88" width="414" height="688"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aX0-wy-5BS">
-                                        <rect key="frame" x="0.0" y="0.0" width="412" height="386.5"/>
-                                    </imageView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ida-Df-J7r">
-                                        <rect key="frame" x="0.0" y="388.5" width="412" height="386.5"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="fif-ke-UQS">
+                                        <rect key="frame" x="0.0" y="0.0" width="412" height="1000"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aX0-wy-5BS">
+                                                <rect key="frame" x="0.0" y="0.0" width="412" height="499"/>
+                                            </imageView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Ida-Df-J7r">
+                                                <rect key="frame" x="0.0" y="501" width="412" height="499"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda. Apooky wooky woo, a zim zam zigaroo. Jim jam pig pam jimmy jamborie. I wish I had a pickle to always keep with me. When I was but a boy I stepped on a big bee. The pain I felt that day really stuck with me. When I grew much older, I started to like tea. This was very bad, since I always had to pee. If someone could help, I'd really like to see. But today I lost my glasses, and that is very DUMB</mutableString>
+                                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1000" id="0Bc-sz-vrl"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
-                            </stackView>
+                                <constraints>
+                                    <constraint firstItem="fif-ke-UQS" firstAttribute="trailing" secondItem="C7T-NJ-E9N" secondAttribute="trailing" constant="412" id="HKk-GB-DnW"/>
+                                    <constraint firstItem="fif-ke-UQS" firstAttribute="bottom" secondItem="C7T-NJ-E9N" secondAttribute="bottom" constant="1000" id="KhJ-zk-VbR"/>
+                                    <constraint firstItem="fif-ke-UQS" firstAttribute="width" secondItem="MoH-Is-2NC" secondAttribute="width" multiplier="0.995169" id="Zmy-QB-sjW"/>
+                                    <constraint firstItem="fif-ke-UQS" firstAttribute="leading" secondItem="C7T-NJ-E9N" secondAttribute="leading" id="a36-c4-Szn"/>
+                                    <constraint firstItem="fif-ke-UQS" firstAttribute="top" secondItem="C7T-NJ-E9N" secondAttribute="top" id="iZU-DE-las"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="C7T-NJ-E9N"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="qdz-t1-LBx"/>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="fif-ke-UQS" firstAttribute="centerX" secondItem="svH-Pt-448" secondAttribute="centerX" id="PhU-Ch-bZl"/>
-                            <constraint firstAttribute="bottom" secondItem="fif-ke-UQS" secondAttribute="bottom" constant="33" id="VPJ-s5-C94"/>
-                            <constraint firstItem="fif-ke-UQS" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="1" id="bAH-o8-7VR"/>
-                            <constraint firstItem="fif-ke-UQS" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="tFi-sj-F1y"/>
-                            <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="fif-ke-UQS" secondAttribute="trailing" constant="1" id="xAr-WN-oub"/>
+                            <constraint firstItem="VUw-jc-0yf" firstAttribute="bottom" secondItem="MoH-Is-2NC" secondAttribute="bottom" constant="86" id="0iF-m8-5PF"/>
+                            <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="MoH-Is-2NC" secondAttribute="trailing" id="Bk5-MG-X8V"/>
+                            <constraint firstItem="MoH-Is-2NC" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" id="LWO-zc-qHe"/>
+                            <constraint firstItem="MoH-Is-2NC" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" id="Qlk-pq-aeu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
@@ -63,11 +79,12 @@
                     <connections>
                         <outlet property="notesView" destination="Ida-Df-J7r" id="gtP-qW-QpN"/>
                         <outlet property="photoView" destination="aX0-wy-5BS" id="M6k-56-Xgl"/>
+                        <outlet property="scrollView" destination="MoH-Is-2NC" id="IzW-z3-q0S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708.48214285714278" y="127.53623188405798"/>
+            <point key="canvasLocation" x="707.24637681159425" y="127.23214285714285"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -87,7 +104,7 @@
         <scene sceneID="smW-Zh-WAh">
             <objects>
                 <tableViewController title="Master" clearsSelectionOnViewWillAppear="NO" id="7bK-jq-Zjz" customClass="MasterViewController" customModule="Lab4" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7i-6Z-zg0">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -100,10 +117,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCq-Ys-upx" userLabel="notesView">
-                                            <rect key="frame" x="145" y="39.5" width="256" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="262" id="wMs-8W-Xqx"/>
-                                            </constraints>
+                                            <rect key="frame" x="144.5" y="39.5" width="256.5" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

@@ -46,6 +46,14 @@ class MasterViewController: UITableViewController {
         }
     }
 
+    
+    // PURPOSE: Adds a new PhotoEntry into the view, and saves it.
+    //
+    // PARAMETERS: Any
+    //
+    // RETURN VALUES/SIDE EFFECTS: N/A
+    //
+    // NOTES: N/A
     @objc
     func insertNewObject(_ sender: Any) {
         objects.insert(PhotoEntry(photo: UIImage(named: "defaultImage")!, notes: "My notes"), at: 0)
@@ -104,8 +112,13 @@ class MasterViewController: UITableViewController {
 
     // Mark: - Load/Save
     
-    // 
-    
+    // PURPOSE: Loads the PhotoEntries that we have saved to file.
+    //
+    // PARAMETERS: PhotoEntry or nil
+    //
+    // RETURN VALUES/SIDE EFFECTS: N/A
+    //
+    // NOTES: N/A
     func loadObjects() -> [PhotoEntry]? { // function declaration for loading an object. returns a PhotoEntry, or nil.
         do {
             let data = try Data(contentsOf: PhotoEntry.archiveURL) // variable data is assigned whatever we find in the archiveUrl value of the PhotoEntry class.
@@ -115,7 +128,13 @@ class MasterViewController: UITableViewController {
             return nil
         }
     }
-
+    // PURPOSE: Saves the current PhotoEntries to file.
+    //
+    // PARAMETERS: N/A
+    //
+    // RETURN VALUES/SIDE EFFECTS: N/A
+    //
+    // NOTES: N/A
     func saveObjects(){
         do {
             let data = try NSKeyedArchiver.archivedData(withRootObject: objects, requiringSecureCoding: false) // data is assigned whatever is retrieved from objects array.

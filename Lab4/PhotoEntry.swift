@@ -15,23 +15,37 @@ class PropertyKey { // contains some String variables to help us identify the pr
     static let notes = "notes"
 }
     
-class PhotoEntry: NSObject, NSCoding { // PhotoEntry is a subclass of these two things.
+class PhotoEntry: NSObject, NSCoding { // PhotoEntry is a subclass of these two classes.
     static let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first! // Determines where our directory will be.
     static let archiveURL = documentsDirectory.appendingPathComponent("entries") // archiveURL must be the path where we will store our photo entries
-    // this ends the first part of saving and loading.
     
     // MARK: - Properties
     var photo: UIImage
     var notes: String
     
     // MARK: - Initializers
+    
+    // PURPOSE: Initializes a new PhotoEntry with the given UIImage and notes String
+    //
+    // PARAMETERS: valid UIImage and String
+    //
+    // RETURN VALUES/SIDE EFFECTS: N/A
+    //
+    // NOTES: N/A
     init(photo: UIImage, notes: String) {
         self.photo = photo
         self.notes = notes
     }
     
     // MARK: - Load/Save
-    // obviously this is also loading and saving.
+    
+    // PURPOSE: Initializes a new PhotoEntry with the given NSCoder that loads an appropriate UIImage and String for the PhotoEntry.
+    //
+    // PARAMETERS: Valid NSCoder
+    //
+    // RETURN VALUES/SIDE EFFECTS: N/A
+    //
+    // NOTES:
     required convenience init?(coder aDecoder: NSCoder) { //
         guard let newPhoto = aDecoder.decodeObject(forKey: PropertyKey.photo) as? UIImage else { // guard assigns newPhoto to whatever UIImage is returned,
             os_log("Missing image", log:OSLog.default, type: .debug) // else the missing image message is logged.

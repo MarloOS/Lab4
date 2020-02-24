@@ -28,6 +28,13 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisappeared), name: UIWindow.keyboardDidShowNotification, object: nil)
     }
     
+    // PURPOSE: Changes the shape of the objects on screen if the keyboard appears.
+    //
+    // PARAMETERS: an NSNotification
+    //
+    // RETURN VALUES/SIDE EFFECTS: N/A
+    //
+    // NOTES: N/A
     @objc func keyboardAppeared(_ notification: NSNotification) {
         guard let frameValue = notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue else {
             return
@@ -37,11 +44,25 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         scrollView.verticalScrollIndicatorInsets.bottom = frame.size.height + OFFSET
     }
     
+    // PURPOSE: Changes the shape of the objects on screen if the keyboard disappears.
+    //
+    // PARAMETERS: an NSNotification
+    //
+    // RETURN VALUES/SIDE EFFECTS: N/A
+    //
+    // NOTES: N/A
     @objc func keyboardDisappeared(_ notification: NSNotification) {
         scrollView.contentInset.bottom = 0
         scrollView.verticalScrollIndicatorInsets.bottom = 0
     }
     
+    // PURPOSE: Keeps track of when the text in the notes box changes.
+    //
+    // PARAMETERS: a UITextView
+    //
+    // RETURN VALUES/SIDE EFFECTS: N/A
+    //
+    // NOTES: N/A
     func textViewDidChange(_ textView: UITextView) {
         entry?.notes = textView.text
         DetailViewController.didChange = true

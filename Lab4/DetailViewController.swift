@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import AVFoundation
 
-class DetailViewController: UIViewController, UITextViewDelegate {
+class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Properties
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var notesView: UITextView!
+    @IBOutlet weak var Camera: UIBarButtonItem!
     var entry: PhotoEntry?
     static var didChange = false
     let OFFSET: CGFloat = 10
@@ -67,4 +69,37 @@ class DetailViewController: UIViewController, UITextViewDelegate {
         entry?.notes = textView.text
         DetailViewController.didChange = true
     }
+    @IBAction func TakePhoto(_ sender: Any) {
+        // Check if the device has a camera
+        if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
+            let alert = UIAlertController(title: "Camera Error", message: "Camera not available", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        
+        // Launch the camera controller
+        AVCaptureDevice.requestAccess(for: AVMediaType.video){ response in
+            if response {
+                DispatchQueue.main.async {
+                    let picker = UIImagePickerController()
+                    picker.delegate = self
+                    picker.sourceType = UIImagePickerController.SourceType.camera
+                    picker.allowsEditing = true
+                    self.present(picker, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        photoView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }

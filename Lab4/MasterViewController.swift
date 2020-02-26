@@ -118,9 +118,9 @@ class MasterViewController: UITableViewController {
     
     // PURPOSE: Loads the PhotoEntries that we have saved to file.
     //
-    // PARAMETERS: PhotoEntry or nil
+    // PARAMETERS: N/A
     //
-    // RETURN VALUES/SIDE EFFECTS: N/A
+    // RETURN VALUES/SIDE EFFECTS: PhotoEntry or nil if no PhotoEntries could be loaded.
     //
     // NOTES: N/A
     func loadObjects() -> [PhotoEntry]? { // function declaration for loading an object. returns a PhotoEntry, or nil.

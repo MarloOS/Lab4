@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Photos
 
 class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -110,4 +111,16 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
     }
     
     
+    @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
+        PHPhotoLibrary.requestAuthorization({status in
+            if status == .authorized {
+                DispatchQueue.main.async{
+                    let imagePickerController = UIImagePickerController()
+                    imagePickerController.sourceType = .photoLibrary
+                    imagePickerController.delegate = self
+                    self.present(imagePickerController, animated: true, completion: nil)
+                }
+            }
+        })
+    }
 }

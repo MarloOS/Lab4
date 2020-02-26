@@ -23,6 +23,9 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
     // MARK: - Delegate Functions
     override func viewDidLoad(){
         super.viewDidLoad()
+        if entry == nil{
+            Camera.isEnabled = false
+        }
         photoView.image = entry?.photo
         notesView.text = entry?.notes
         notesView.delegate = self
@@ -69,6 +72,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
         entry?.notes = textView.text
         DetailViewController.didChange = true
     }
+    
     @IBAction func TakePhoto(_ sender: Any) {
         // Check if the device has a camera
         if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
@@ -95,6 +99,10 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         photoView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         picker.dismiss(animated: true, completion: nil)
+        if let newPhoto = photoView.image {
+            entry?.photo = newPhoto
+            DetailViewController.didChange = true
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

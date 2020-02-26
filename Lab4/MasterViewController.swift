@@ -102,6 +102,10 @@ class MasterViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            if objects[indexPath.row] == detailViewController?.entry{ // checks to see if the object in the thing we are deleting is the same thing in the detail view
+                detailViewController?.entry = nil // if so, delete whatever is in the detail view
+                detailViewController?.viewDidLoad() // and refresh it.
+            }
             objects.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             saveObjects()

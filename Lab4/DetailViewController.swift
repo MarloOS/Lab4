@@ -17,6 +17,7 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var notesView: UITextView!
     @IBOutlet weak var Camera: UIBarButtonItem!
+    @IBOutlet weak var date: UIDatePicker!
     var entry: PhotoEntry?
     static var didChange = false
     let OFFSET: CGFloat = 10
@@ -29,9 +30,10 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
         }
         photoView.image = entry?.photo
         notesView.text = entry?.notes
+        date.date = entry!.date
         notesView.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppeared), name: UIWindow.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisappeared), name: UIWindow.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDisappeared), name: UIWindow.keyboardDidHideNotification, object: nil)
     }
     
     // PURPOSE: Changes the shape of the objects on screen if the keyboard appears.
@@ -74,6 +76,10 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
         DetailViewController.didChange = true
     }
     
+    // PURPOSE: Takes a photo if the camera is available and uses that photo as the new entry image.
+    // PARAMETERS: any
+    // RETURN VALUES/SIDE EFFECTS: entry image is assigned captured photo
+    // NOTES: Will not work if device has no camera.
     @IBAction func TakePhoto(_ sender: Any) {
         // Check if the device has a camera
         if !UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera) {
@@ -110,7 +116,10 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
         picker.dismiss(animated: true, completion: nil)
     }
     
-    
+    // PURPOSE: Recognizes a screen tap and opens up the image library to select a new image for the entry.
+    // PARAMETERS: a valid UITapGestureRecognizer
+    // RETURN VALUES/SIDE EFFECTS: entry image is assigned the selected image.
+    // NOTES: Requests authorization to access the photo library to work properly.
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         PHPhotoLibrary.requestAuthorization({status in
             if status == .authorized {
@@ -122,5 +131,16 @@ class DetailViewController: UIViewController, UITextViewDelegate, UIImagePickerC
                 }
             }
         })
+    }
+        
+    // PURPOSE: Detects when the date has been changed and saves its value to the entries file.
+    // PARAMETERS: a valid UIDatePicker
+    // RETURN VALUES/SIDE EFFECTS: entry date is assigned the current datepicker value.
+    // NOTES: N/A
+    
+    @objc func dateChanged(_ sender: UIDatePicker){
+    date.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+    entry?.date = date.date
+    DetailViewController.didChange = true
     }
 }

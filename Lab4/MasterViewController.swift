@@ -56,7 +56,7 @@ class MasterViewController: UITableViewController {
     // NOTES: N/A
     @objc
     func insertNewObject(_ sender: Any) {
-        objects.insert(PhotoEntry(photo: UIImage(named: "defaultImage")!, notes: "My notes"), at: 0)
+        objects.insert(PhotoEntry(photo: UIImage(named: "defaultImage")!, notes: "My notes", date: Date()), at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
         saveObjects()
